@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import re
 from urllib import parse
+from time import sleep
 
 import praw
 
@@ -27,6 +28,7 @@ def main():
 
         if match:
             try:
+                sleep(10)
                 comment.refresh()
             except praw.exceptions.ClientException:  # fix for deleted comments
                 print('SKIPPING due to clientexcep:', comment, comment.body)
@@ -45,5 +47,6 @@ def main():
                                      for w in footer.format(delete_link).split()))
 
 
-main()
+if __name__ == "__main__":
+    main()
 

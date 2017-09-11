@@ -6,6 +6,6 @@ def forever(f):
             while True:
                 try:
                     f()
-                except prawcore.exceptions.RequestException:
+                except prawcore.exceptions.RequestException or prawcore.exceptions.ServerError:
                     pass
     return inner
